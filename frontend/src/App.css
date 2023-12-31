@@ -1,0 +1,48 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 10%; /* Adjust this value according to your design */
+  height: auto; /* Maintain the aspect ratio */
+}
+
+@media (max-width: 768px) {
+  .App-logo {
+    width: 30%; /* Adjust this value according to your design */
+  }
+}
+
+@media (max-width: 480px) {
+  .App-logo {
+    width: 30%; /* Adjust this value according to your design */
+  }
+}
+
+
+.App-header {
+  background-color: #282c34;
+  min-height: 7vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
