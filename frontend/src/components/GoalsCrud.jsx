@@ -1,13 +1,15 @@
 import React, {useState} from 'react'
-import api from '../../api/axiosConfig';
+import api from '../api/axiosConfig';
+import {Link} from "react-router-dom";
+import { useNavigate } from 'react-router-dom';
 
 
-const GoalsCrud = ({ onClose }) => {
+const GoalsCrud = ({}) => {
 
     const [id, setId] = useState("");
     const [name, setName] = useState("");
     const [description, setDescription] = useState("");
-
+    const navigate = useNavigate();
     async function save(event) {
         event.preventDefault();
         await api.post("/goals", {
@@ -19,7 +21,7 @@ const GoalsCrud = ({ onClose }) => {
         setId("");
         setName("");
         setDescription("");
-        onClose()
+        navigate('/');
     }
 
     return (
@@ -55,7 +57,7 @@ const GoalsCrud = ({ onClose }) => {
                     <button className="btn btn-primary" onClick={save}>
                         Add New Goal
                     </button>
-                    <button className="btn btn-dange" onClick={onClose}>Cancel</button>
+                    <Link to={"/"} className="btn btn-primary">Cancel</Link>
                 </div>
             </form>
         </div>

@@ -34,6 +34,8 @@ Application to track and manage your goals
   ```
 
 # References
+- UI
+  - [Materialize CSS](https://materializecss.com/about.html)
 - Containerization
   - [Spring Boot with Docker](https://spring.io/guides/topicals/spring-boot-docker/)
   - [Java images using Docker](https://docs.docker.com/language/java/build-images/)

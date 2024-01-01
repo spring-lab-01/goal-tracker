@@ -1,11 +1,11 @@
 import React, {useEffect, useState} from 'react'
-import api from "../../api/axiosConfig";
+import api from "../api/axiosConfig";
 import { format } from 'date-fns';
-import GoalsCrud from "../GoalsCrud/GoalsCrud";
-import Modal from 'react-modal';
+import {Link} from "react-router-dom";
+import { useNavigate } from 'react-router-dom';
 const GoalList = () =>{
     const [goals, setGoals] = useState([]);
-
+    const navigate = useNavigate();
     useEffect(() => {
         load()
     }, []); // Empty array means this effect runs once on mount
@@ -16,43 +16,24 @@ const GoalList = () =>{
             setGoals(response.data);
         });
     };
-    const [modalIsOpen, setModalIsOpen] = useState(false);
 
-    const openModal = () => {
-        setModalIsOpen(true);
-    };
 
-    const closeModal = () => {
-        setModalIsOpen(false);
-        load()
-    };
-
-    async function editGoal(goal) {
-        if (!goal.id) return alert("Goals Not Found");
-        await api.put("/goals/" + goal.id, {
-            goal
-        });
-        alert("Goal Updated");
-    }
-
-    async function deleteGoal(goal) {
-        await api.delete("/goals/" + goal.id);
+    async function deleteGoal(id) {
+        await api.delete("/goals/" + id);
         alert("Goal Deleted Successfully");
-        goals.remove(goal);
+        load();
     }
 
     return (
         <div>
 
             <div>
-                <h1 className="text-center">My Goals</h1>
-                <button type="button" className="btn btn-primary" onClick={openModal}>Add New Goal</button>
-                <Modal isOpen={modalIsOpen} onRequestClose={closeModal}>
-                    <GoalsCrud onClose={closeModal}/>
-                </Modal>
-
+                <Link to="addGoal" className="right">
+                    <a className="btn-floating btn-large waves-effect waves-light red"><i
+                        className="material-icons">add</i></a>
+                </Link>
             </div>
-            <table className="table table-hover mt-3" align="center">
+            <table className="table" align="center">
                 <thead className="thead-light">
                 <tr>
                     <th scope="col" hidden={true}>Id</th>
@@ -71,13 +52,14 @@ const GoalList = () =>{
                             <td>{goal.description}</td>
                             <td>{format(goal.createdDatetime, 'dd-MMM-yyyy h:mm:ss a')}</td>
                             <td>
-                                <button
-                                    type="button"
-                                    className="btn btn-warning"
-                                    onClick={() => editGoal(goal)}
+                                <Link
+                                    to={{
+                                        pathname: `editGoal/${goal.id}`,
+                                        state: { goals: goal }
+                                    }}
                                 >
-                                    Edit
-                                </button>
+                                    <button className="btn">Edit</button>
+                                </Link>
                                 <button
                                     type="button"
                                     className="btn btn-danger mx-2"
