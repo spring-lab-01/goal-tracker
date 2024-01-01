@@ -16,13 +16,13 @@ Application to track and manage your goals
   ```
   cd frontend && npm install && npm run build
   ```
-- Build Backend - Run below command inside folder `goal-tracker`
+- Build Backend
   ```
-  cd backend && gradle build
+  cd ../backend && gradle build
   ```
 - Build Docker Image
   ```
-  cd backend && docker build -t reureka/gt .
+  docker build -t reureka/gt .
   ```
 - Run Docker Image
   ```
