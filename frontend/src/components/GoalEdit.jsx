@@ -49,7 +49,7 @@ const GoalEdit = _ => {
                         type="text"
                         className="form-control"
                         value={name}
-                        onChange={e => setGoalName(e.target.value) }
+                        onChange={e => setGoalName(e.target.value)}
                     />
                 </div>
                 <div className="form-group mb-2">
@@ -58,15 +58,15 @@ const GoalEdit = _ => {
                         type="text"
                         className="form-control"
                         value={description}
-                        onChange={e => setGoalDescription(e.target.value) }
+                        onChange={e => setGoalDescription(e.target.value)}
                     />
                 </div>
 
                 <div>
-                    <button className="btn" onClick={save}>
-                        Save
-                    </button>
-                    <Link to={"/"} className="btn">Cancel</Link>
+                    <i className="small material-icons" onClick={save}>save</i>
+                    <Link to={"/"}>
+                        <i className="small material-icons">cancel</i>
+                    </Link>
                 </div>
             </form>
         </div>

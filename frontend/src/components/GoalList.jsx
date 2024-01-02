@@ -33,14 +33,15 @@ const GoalList = () =>{
                         className="material-icons">add</i></a>
                 </Link>
             </div>
-            <table className="table" align="center">
-                <thead className="thead-light">
+            <h1 className="center">My Goals</h1>
+            <table className="striped" align="center">
+                <thead>
                 <tr>
-                    <th scope="col" hidden={true}>Id</th>
-                    <th scope="col">Goal</th>
-                    <th scope="col">More About it</th>
-                    <th scope="col">Created At</th>
-                    <th scope="col">Actions</th>
+                    <th hidden={true}>Id</th>
+                    <th>Goal</th>
+                    <th>Description</th>
+                    <th>Created Datetime</th>
+                    <th>Actions</th>
                 </tr>
                 </thead>
                 {goals.map((goal, index) => {
@@ -52,21 +53,17 @@ const GoalList = () =>{
                             <td>{goal.description}</td>
                             <td>{format(goal.createdDatetime, 'dd-MMM-yyyy h:mm:ss a')}</td>
                             <td>
-                                <Link
-                                    to={{
-                                        pathname: `editGoal/${goal.id}`,
-                                        state: { goals: goal }
-                                    }}
-                                >
-                                    <button className="btn">Edit</button>
-                                </Link>
-                                <button
-                                    type="button"
-                                    className="btn btn-danger mx-2"
-                                    onClick={() => deleteGoal(goal.id)}
-                                >
-                                    Delete
-                                </button>
+                                    <Link
+                                        to={{
+                                            pathname: `editGoal/${goal.id}`,
+                                            state: {goals: goal}
+                                        }}>
+                                        <i className="small material-icons">edit</i>
+                                    </Link>
+                                    <i className="small material-icons"
+                                       onClick={() => deleteGoal(goal.id)}>delete</i>
+
+
                             </td>
                         </tr>
                         </tbody>

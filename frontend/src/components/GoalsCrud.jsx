@@ -35,7 +35,7 @@ const GoalsCrud = ({}) => {
                         value={id}
                         onChange={e => setId(e.target.value)}
                     />
-                    <label>Name</label>
+                    <label>Goal</label>
                     <input
                         type="text"
                         className="form-control"
@@ -54,10 +54,10 @@ const GoalsCrud = ({}) => {
                 </div>
 
                 <div>
-                    <button className="btn btn-primary" onClick={save}>
-                        Add New Goal
-                    </button>
-                    <Link to={"/"} className="btn btn-primary">Cancel</Link>
+                    <i className="small material-icons" onClick={save}>save</i>
+                    <Link to={"/"}>
+                        <i className="small material-icons">cancel</i>
+                    </Link>
                 </div>
             </form>
         </div>
