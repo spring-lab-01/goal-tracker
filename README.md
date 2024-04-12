@@ -10,23 +10,37 @@ Application to track and manage your goals
  - Frontend
    - Node - v20.7.0
    - React
+ - Docker
 
-## How to Build & Run
+## How to Build & Run (In Windows Machine)
 - Build Frontend - Run below command inside folder `goal-tracker`
   ```
-  cd frontend && npm install && npm run build
+  cd frontend 
   ```
-- Build Backend
+
+  install node modules and buld ui 
   ```
-  cd ../backend && gradle build
+  npm install  
+  npm run build
+  ```
+  ** npm run build - command will build and copy ui resources inside src/resources
+
+- Build Backend - Run below command inside folder `goal-tracker`
+
+  ```
+  cd ..\backend 
+  ```
+  build backend
+  ```
+  gradlew.bat build
   ```
 - Build Docker Image
   ```
-  docker build -t reureka/gt .
+  docker build -t hkchauhan022/gt .
   ```
 - Run Docker Image
   ```
-  docker run -p 8081:8081 reureka/gt
+  docker run -p 8081:8081 hkchauhan022/gt
   ```
 - Run Application at port 8081 - open browser and enter url
   ```
