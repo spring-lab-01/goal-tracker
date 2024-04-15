@@ -6,9 +6,7 @@ interface HeaderProps {}
 
 const Header: FC<HeaderProps> = () => (
   <div>
-      <div className="nav-wrapper">
-            <img src={logo} className="App-logo" alt="logo"/>
-      </div>
+    <img src={logo} className="App-logo" alt="logo"/>
   </div>
 );
 

@@ -11,6 +11,7 @@ const RouterMapping: FC<RouterMappingProps> = () => (
           <BrowserRouter>
             <Routes>
                 <Route path="/" element={<GoalList/>}></Route>
+                <Route path="goals" element={<GoalList/>}></Route>
                 <Route path="addGoal" element={<GoalsCrud/>}></Route>
                 <Route path="editGoal/:id" element={<GoalEdit/>}></Route>
             </Routes>

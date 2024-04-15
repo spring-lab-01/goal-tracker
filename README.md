@@ -51,6 +51,10 @@ Application to track and manage your goals
 - UI
   - [Materialize CSS](https://materializecss.com/about.html)
   - [React](https://react.dev/learn)
+  - Use this command to generate new component 
+  ```
+  npx generate-react-cli component <component name>
+  ```
 - Containerization
   - [Spring Boot with Docker](https://spring.io/guides/topicals/spring-boot-docker/)
   - [Java images using Docker](https://docs.docker.com/language/java/build-images/)
