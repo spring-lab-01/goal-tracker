@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react'
 import api from '../api/axiosConfig';
 import {Link, useLocation, useParams} from "react-router-dom";
 import { useNavigate } from 'react-router-dom';
+import {Button} from "reactstrap";
 
 
 const GoalEdit = _ => {
@@ -9,7 +10,7 @@ const GoalEdit = _ => {
     const [goal, setGoal] = useState({});
     const [name, setGoalName] = useState("");
     const [description, setGoalDescription] = useState("");
-
+    var editGoal = name;
     const { id } =  useParams();
 
     useEffect(() => {
@@ -42,6 +43,7 @@ const GoalEdit = _ => {
 
     return (
         <div className="container">
+            <h4>Edit Goal - #{id}</h4>
             <form>
                 <div className="form-group">
                     <label>Name</label>
@@ -62,10 +64,10 @@ const GoalEdit = _ => {
                     />
                 </div>
 
-                <div>
-                    <i className="small material-icons" onClick={save}>save</i>
+                <div className={"container-fluid"}>
+                    <Button onClick={save}>Save</Button>
                     <Link to={"/"}>
-                        <i className="small material-icons">cancel</i>
+                        <Button>Cancel</Button>
                     </Link>
                 </div>
             </form>

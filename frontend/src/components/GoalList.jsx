@@ -3,6 +3,7 @@ import api from "../api/axiosConfig";
 import { format } from 'date-fns';
 import {Link} from "react-router-dom";
 import { useNavigate } from 'react-router-dom';
+import {Button, Table} from "reactstrap";
 const GoalList = () =>{
     const [goals, setGoals] = useState([]);
     const navigate = useNavigate();
@@ -25,16 +26,14 @@ const GoalList = () =>{
     }
 
     return (
-        <div>
-
+        <div className={"container-fluid"}>
+            <h4>My Goals</h4>
             <div>
                 <Link to="addGoal" className="right">
-                    <a className="btn-floating btn-large waves-effect waves-light red"><i
-                        className="material-icons">add</i></a>
+                    <Button className="btn-info">Add</Button>
                 </Link>
             </div>
-            <h1 className="center">My Goals</h1>
-            <table className="striped" align="center">
+            <Table responsive>
                 <thead>
                 <tr>
                     <th hidden={true}>Id</th>
@@ -44,7 +43,7 @@ const GoalList = () =>{
                     <th>Actions</th>
                 </tr>
                 </thead>
-                {goals.map((goal, index) => {
+                {goals && goals.map((goal, index) => {
                     return (
                         <tbody key={goal.id}>
                         <tr>
@@ -53,23 +52,20 @@ const GoalList = () =>{
                             <td>{goal.description}</td>
                             <td>{format(goal.createdDatetime, 'dd-MMM-yyyy h:mm:ss a')}</td>
                             <td>
-                                    <Link
-                                        to={{
-                                            pathname: `editGoal/${goal.id}`,
-                                            state: {goals: goal}
-                                        }}>
-                                        <i className="small material-icons">edit</i>
-                                    </Link>
-                                    <i className="small material-icons"
-                                       onClick={() => deleteGoal(goal.id)}>delete</i>
-
-
+                                <Link
+                                    to={{
+                                        pathname: `editGoal/${goal.id}`,
+                                        state: {goals: goal}
+                                    }}>
+                                    <Button className="btn-info">Edit</Button>
+                                </Link>
+                                <Button className="btn-danger" onClick={() => deleteGoal(goal.id)}>Delete</Button>
                             </td>
                         </tr>
                         </tbody>
                     );
                 })}
-            </table>
+            </Table>
         </div>
     )
 };

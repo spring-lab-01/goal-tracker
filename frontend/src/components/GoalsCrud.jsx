@@ -2,6 +2,7 @@ import React, {useState} from 'react'
 import api from '../api/axiosConfig';
 import {Link} from "react-router-dom";
 import { useNavigate } from 'react-router-dom';
+import {Button} from "reactstrap";
 
 
 const GoalsCrud = ({}) => {
@@ -25,7 +26,8 @@ const GoalsCrud = ({}) => {
     }
 
     return (
-        <div className="container" >
+        <div responsive>
+            <h4>Add New Goal</h4>
             <form>
                 <div className="form-group">
                     <input
@@ -35,7 +37,7 @@ const GoalsCrud = ({}) => {
                         value={id}
                         onChange={e => setId(e.target.value)}
                     />
-                    <label>Goal</label>
+                    Goal
                     <input
                         type="text"
                         className="form-control"
@@ -44,7 +46,7 @@ const GoalsCrud = ({}) => {
                     />
                 </div>
                 <div className="form-group mb-2">
-                    <label>Description</label>
+                    Description
                     <input
                         type="text"
                         className="form-control"
@@ -54,9 +56,9 @@ const GoalsCrud = ({}) => {
                 </div>
 
                 <div>
-                    <i className="small material-icons" onClick={save}>save</i>
+                    <Button onClick={save}>Save</Button>
                     <Link to={"/"}>
-                        <i className="small material-icons">cancel</i>
+                        <Button>Cancel</Button>
                     </Link>
                 </div>
             </form>

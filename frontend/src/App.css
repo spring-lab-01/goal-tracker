@@ -1,8 +1,15 @@
+#root {
+  /*margin: 0 auto;*/
+  padding: 2rem;
+  text-align: center;
+}
+
 .App {
   text-align: center;
 }
 
 .App-logo {
+  padding: 1rem;
   position: absolute;
   top: 0;
   left: 0;
