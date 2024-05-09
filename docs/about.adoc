@@ -1,0 +1,31 @@
+:app-name: GoalTracker App
+
+= {app-name}
+Hemant Kumar <hkchauhan022@gmail.com>
+:toc:
+:icons: font
+:url-quickref: https://docs.asciidoctor.org/asciidoc/latest/syntax-quick-reference/
+
+
+== About {app-name}
+
+This app is designed to help you set, track, and achieve your personal and professional goals. Whether you're looking to learn a new skill, improve your health, or advance in your career, GoalMaster is here to guide you every step of the way.
+
+### Set Your Goals
+
+Start by setting your goals. You can create short-term or long-term goals, personal or professional. Each goal can be broken down into smaller, manageable tasks to make it easier for you to achieve.
+
+### Track Your Progress
+
+Keep track of your progress with our intuitive dashboard. See at a glance how much you've achieved and what's left to do. Get reminders for upcoming tasks and deadlines.
+
+### Stay Motivated
+
+Receive personalized motivational messages and tips to keep you motivated. Share your achievements with friends and family to celebrate your progress.
+
+### Analyze Your Performance
+
+Use our analytics feature to understand your performance. Find out what's working, what's not, and how you can improve.
+
+
+include::Prerequisites.adoc[leveloffset=+1]

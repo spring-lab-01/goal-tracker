@@ -1,0 +1,11 @@
+= Prerequisites
+
+
+* Java 17
+* Springboot
+* React
+* H2
+* Gradle
+* Docker (Optional)
+* Terraform (Optional)
+
