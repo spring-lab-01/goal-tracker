@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: goal-tracker
+  namespace: default
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      service: goal-tracker-service
+  template:
+    metadata:
+      labels:
+        service: goal-tracker-service
+    spec:
+      containers:
+        - name: server-service
+          image: hkchauhan022/gt
+          imagePullPolicy: Always
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: goal-tracker-entrypoint
+  namespace: default
+spec:
+  type: NodePort
+  selector:
+    service: goal-tracker-service
+  ports:
+    - port: 8080
+      targetPort: 8080
+      nodePort: 30001

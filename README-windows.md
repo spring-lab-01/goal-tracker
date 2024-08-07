@@ -28,11 +28,11 @@ Application to track and manage your goals
 - Build Backend - Run below command inside folder `goal-tracker`
 
   ```
-  cd backend 
+  cd ..\backend 
   ```
   build backend
   ```
-  sh gradlew build
+  gradlew.bat build
   ```
 - Build Docker Image
   ```
