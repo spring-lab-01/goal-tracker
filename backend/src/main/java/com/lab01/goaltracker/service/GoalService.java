@@ -5,6 +5,7 @@ import com.lab01.goaltracker.exception.ValidationFailedException;
 import com.lab01.goaltracker.model.Goal;
 import com.lab01.goaltracker.repo.GoalRepository;
 import lombok.Data;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -12,10 +13,13 @@ import java.util.List;
 import java.util.Objects;
 
 @Service
-@Data
 public class GoalService {
 
     private final GoalRepository goalRepository;
+
+    public GoalService(GoalRepository goalRepository) {
+        this.goalRepository = goalRepository;
+    }
 
     public List<Goal> getGoals() {
         return goalRepository.findAll();
