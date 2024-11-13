@@ -10,32 +10,32 @@ import org.springframework.web.servlet.resource.ResourceResolverChain;
 
 import java.util.List;
 
+import static java.util.Objects.nonNull;
+
 @Configuration
 class DefaultWebMvcConfigurer implements WebMvcConfigurer {
-    // Register resource handler for all paths,
-    // get resources from classpath:/static/,
-    // use IndexFallbackResourceResolver for that
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
-        registry
-                .addResourceHandler("/**")
-                .addResourceLocations("classpath:/static/")
-                .resourceChain(true)
-                .addResolver(new IndexFallbackResourceResolver());
+        this.serveDirectory(registry, "/", "classpath:/static/");
     }
 
-    static class IndexFallbackResourceResolver extends PathResourceResolver {
-        @Override
-        protected Resource resolveResourceInternal(HttpServletRequest request, String requestPath,
-                                                   List<? extends Resource> locations,
-                                                   ResourceResolverChain chain) {
-            // Give PathResourceResolver a chance to resolve a resource on its own.
-            Resource resource = super.resolveResourceInternal(request, requestPath, locations, chain);
-            if (resource == null) {
-                // If resource wasn't found, use index.html file.
-                resource = super.resolveResourceInternal(request, "index.html", locations, chain);
-            }
-            return resource;
-        }
+    private void serveDirectory(ResourceHandlerRegistry registry, String endpoint, String location) {
+        String[] endpointPatterns = endpoint.endsWith("/")
+                ? new String[]{endpoint.substring(0, endpoint.length() - 1), endpoint, endpoint + "**"}
+                : new String[]{endpoint, endpoint + "/", endpoint + "/**"};
+        registry
+                .addResourceHandler(endpointPatterns)
+                .addResourceLocations(location.endsWith("/") ? location : location + "/")
+                .resourceChain(false)
+                .addResolver(new PathResourceResolver() {
+                    @Override
+                    public Resource resolveResource(HttpServletRequest request, String requestPath, List<? extends Resource> locations, ResourceResolverChain chain) {
+                        Resource resource = super.resolveResource(request, requestPath, locations, chain);
+                        if (nonNull(resource)) {
+                            return resource;
+                        }
+                        return super.resolveResource(request, "/index.html", locations, chain);
+                    }
+                });
     }
 }
