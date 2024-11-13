@@ -32,19 +32,22 @@ Application to track and manage your goals
   ```
   build backend
   ```
-  sh gradlew build
+  mvn package
   ```
 - Build Docker Image
   ```
-  docker build -t hkchauhan022/gt .
+  docker build -t springlab/goal-tracker .
   ```
 - Run Docker Image
   ```
-  docker run -p 8081:8081 hkchauhan022/gt
+  docker run -p 8081:8081 springlab/goal-tracker
   ```
 - Run Application at port 8081 - open browser and enter url
+    ```
+    http://localhost:8081/actuator/health
+    ```
   ```
-  localhost:8081
+  http://localhost:8081
   ```
 ### Run in Local Kubernetes Cluster
 - Enable Kubernetes In Docker
